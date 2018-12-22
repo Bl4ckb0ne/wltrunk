@@ -1,0 +1,1 @@
+option('trunkston', type: 'boolean', value: true, description: 'Build the trunkston example compositor')

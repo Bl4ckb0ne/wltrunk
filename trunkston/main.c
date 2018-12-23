@@ -1,4 +1,4 @@
-#include "wltrunk/wlt_server.h"
+#include "wltrunk/server.h"
 
 int main(int argc, char **argv)
 {

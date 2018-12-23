@@ -1,4 +1,4 @@
-#include "wltrunk/wlt_server.h"
+#include "wltrunk/server.h"
 
 struct wlt_server *create_wlt_server()
 {

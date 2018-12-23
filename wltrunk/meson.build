@@ -1,5 +1,5 @@
 wltrunk_src = files(
-  'wlt_server.c',
+  'server.c',
 )
 
 wltrunk_deps = [

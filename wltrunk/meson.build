@@ -1,5 +1,6 @@
 wltrunk_src = files(
   'server.c',
+  'backend.c',
 )
 
 wltrunk_deps = [

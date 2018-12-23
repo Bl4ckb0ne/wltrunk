@@ -33,5 +33,8 @@ void destroy_wlt_server(struct wlt_server *server)
 	// FIXME: WLR_ALLOC
 	wlr_log(WLR_DEBUG, "Destroying wlt_server %p", (void*)server);
 
+	wl_display_destroy_clients(server->wl_display);
+	wl_display_destroy(server->wl_display);
+
 	free(server);
 }

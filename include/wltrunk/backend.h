@@ -30,7 +30,7 @@
 #include <wlr/types/wlr_data_device.h>
 #include <wlr/xwayland.h>
 
-#include "wltunk/wlt_server.h"
+#include "wltrunk/server.h"
 
 struct wlt_backend
 {
@@ -43,25 +43,25 @@ struct wlt_backend
 	struct wlr_screenshooter *wlr_screenshooter;
 	struct wlr_export_dmabuf_manager_v1 *wlr_export_dmabuf_manager_v1;
 	struct wlr_server_decoration_manager *wlr_server_decoration_manager;
-	struct wlr_xdg_decoration_manager_v1 *wlr_xdg_decoration_manager;
+	struct wlr_xdg_decoration_manager_v1 *wlr_xdg_decoration_manager_v1;
 	struct wlr_gtk_primary_selection_device_manager
-			*wlr_primary_selection_device_manager;
+		*wlr_gtk_primary_selection_device_manager;
 	struct wlr_idle *wlr_idle;
-	struct wlr_idle_inhibit_manager_v1 *wlr_idle_inhibit;
-	struct wlr_input_inhibit_manager *wlr_input_inhibit;
-	struct wlr_input_method_manager_v2 *wlr_input_method;
-	struct wlr_text_input_manager_v3 *wlr_text_input;
-	struct wlr_virtual_keyboard_manager_v1 *wlr_virtual_keyboard;
-	struct wlr_screencopy_manager_v1 *wlr_screencopy;
-	struct wlr_tablet_manager_v2 *wlr_tablet_v2;
+	struct wlr_idle_inhibit_manager_v1 *wlr_idle_inhibit_manager_v1;
+	struct wlr_input_inhibit_manager *wlr_input_inhibit_manager;
+	struct wlr_input_method_manager_v2 *wlr_input_method_manager_v2;
+	struct wlr_text_input_manager_v3 *wlr_text_input_manager_v3;
+	struct wlr_virtual_keyboard_manager_v1 *wlr_virtual_keyboard_manager_v1;
+	struct wlr_screencopy_manager_v1 *wlr_screencopy_manager_v1;
+	struct wlr_tablet_manager_v2 *wlr_tablet_manager_v2;
 	struct wlr_pointer_constraints_v1 *wlr_pointer_constraints;
 	struct wlr_presentation *wlr_presentation;
 	struct wlr_foreign_toplevel_manager_v1 *wlr_foreign_toplevel_manager_v1;
-	struct wlr_xwayland *wlr_xwayland;
 
 	struct wlr_wl_shell *wlr_wl_shell;
 	struct wlr_xdg_shell_v6 *wlr_xdg_shell_v6;
 	struct wlr_xdg_shell *wlr_xdg_shell;
+	struct wlr_xwayland *wlr_xwayland;
 	struct wlr_layer_shell_v1 *wlr_layer_shell;
 
 	/* Global resources */

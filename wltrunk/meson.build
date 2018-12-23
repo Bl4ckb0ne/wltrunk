@@ -1,4 +1,6 @@
-wltrunk_src = files()
+wltrunk_src = files(
+  'wlt_server.c',
+)
 
 wltrunk_deps = [
 	wlroots,

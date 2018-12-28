@@ -3,6 +3,7 @@ trunkston_src = [
 ]
 
 trunkston_deps = [
+	wayland_server,
 	wlroots,
 	wlr_protos,
 ]

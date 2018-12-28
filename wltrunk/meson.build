@@ -1,5 +1,4 @@
 wltrunk_src = files(
-  'server.c',
   'backend.c',
 )
 

@@ -40,6 +40,7 @@
 
 struct wlt_backend
 {
+	/* Wayland resources */
 	struct wl_display *wl_display;
 
 	/* wlroots resources */
@@ -72,16 +73,14 @@ struct wlt_backend
 	struct wlr_xwayland *wlr_xwayland;
 	struct wlr_layer_shell_v1 *wlr_layer_shell;
 
-	/* Wayland listeners */
-	struct wl_listener pointer_constraint;
-
 	/* Global resources */
 	struct wlr_data_device_manager *wlr_data_device_manager;
-	const char *wl_socket;
+
+	/* Wayland listeners */
+	struct wl_listener pointer_constraint;
 };
 
 struct wlt_backend *create_wlt_backend(struct wl_display *display);
-bool init_wlt_backend(struct wlt_backend *backend);
 void destroy_wlt_backend(struct wlt_backend *backend);
 
 

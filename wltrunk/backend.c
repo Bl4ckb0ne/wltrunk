@@ -18,7 +18,7 @@ struct wlt_backend *create_wlt_backend(struct wl_display *display)
 	}
 
 	backend->wlr_renderer = wlr_backend_get_renderer(backend->wlr_backend);
-	assert(backend->wlr_backend);
+	assert(backend->wlr_renderer);
 
 	backend->wlr_compositor = wlr_compositor_create(display,
 		backend->wlr_renderer);
@@ -121,35 +121,6 @@ struct wlt_backend *create_wlt_backend(struct wl_display *display)
 	wlr_log(WLR_DEBUG, "Creating wlt_backend %p", (void*)backend);
 
 	return backend;
-}
-
-bool init_wlt_backend(struct wlt_backend *backend)
-{
-	wlr_log(WLR_DEBUG, "Initializing wlt_backend %p ...", (void*)backend);
-
-	wlr_renderer_init_wl_display(backend->wlr_renderer, backend->wl_display);
-
-	backend->wl_socket = wl_display_add_socket_auto(backend->wl_display);
-	if (backend->wl_socket == NULL)
-	{
-		wlr_log(WLR_ERROR, "Unable to create Wayland socket");
-		return false;
-	}
-
-	wlr_log(WLR_INFO, "Compositor running on Wayland display '%s'",
-		backend->wl_socket);
-	setenv("_WAYLAND_DISPLAY", backend->wl_socket, true);
-
-	if (wlr_backend_start(backend->wlr_backend) == false)
-	{
-		wlr_log(WLR_ERROR, "Failed to start wlr_backend");
-		return false;
-	}
-
-	setenv("WAYLAND_DISPLAY", backend->wl_socket, true);
-
-	wlr_log(WLR_DEBUG, "wlt_backend %p initialized", (void*)backend);
-	return true;
 }
 
 void destroy_wlt_backend(struct wlt_backend *backend)

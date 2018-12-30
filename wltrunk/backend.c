@@ -24,62 +24,11 @@ struct wlt_backend *create_wlt_backend(struct wl_display *display)
 		backend->wlr_renderer);
 	assert(backend->wlr_compositor);
 
-	backend->wlr_gamma_control_manager = wlr_gamma_control_manager_create(
-		display);
-	assert(backend->wlr_gamma_control_manager);
-
-	backend->wlr_gamma_control_manager_v1 = wlr_gamma_control_manager_v1_create(
-		display);
-	assert(backend->wlr_gamma_control_manager_v1);
-
 	backend->wlr_screenshooter = wlr_screenshooter_create(display);
 	assert(backend->wlr_screenshooter);
 
-	backend->wlr_export_dmabuf_manager_v1 = wlr_export_dmabuf_manager_v1_create(
-		display);
-	assert(backend->wlr_export_dmabuf_manager_v1);
-
-	backend->wlr_server_decoration_manager =
-		wlr_server_decoration_manager_create(display);
-	assert(backend->wlr_server_decoration_manager);
-
-	backend->wlr_xdg_decoration_manager_v1 =
-		wlr_xdg_decoration_manager_v1_create(display);
-	assert(backend->wlr_xdg_decoration_manager_v1);
-
-	backend->wlr_gtk_primary_selection_device_manager =
-		wlr_gtk_primary_selection_device_manager_create(display);
-	assert(backend->wlr_gtk_primary_selection_device_manager);
-
 	backend->wlr_idle = wlr_idle_create(display);
 	assert(backend->wlr_idle);
-
-	backend->wlr_idle_inhibit_manager_v1 = wlr_idle_inhibit_v1_create(
-		display);
-	assert(backend->wlr_idle_inhibit_manager_v1);
-
-	backend->wlr_input_inhibit_manager = wlr_input_inhibit_manager_create(
-		display);
-	assert(backend->wlr_input_inhibit_manager);
-
-	backend->wlr_input_method_manager_v2 = wlr_input_method_manager_v2_create(
-		display);
-	assert(backend->wlr_input_method_manager_v2);
-
-	backend->wlr_text_input_manager_v3 = wlr_text_input_manager_v3_create(
-		display);
-	assert(backend->wlr_text_input_manager_v3);
-
-	backend->wlr_virtual_keyboard_manager_v1 =
-		wlr_virtual_keyboard_manager_v1_create(display);
-	assert(backend->wlr_virtual_keyboard_manager_v1);
-
-	backend->wlr_screencopy_manager_v1 = wlr_screencopy_manager_v1_create(
-		display);
-	assert(backend->wlr_screencopy_manager_v1);
-
-	backend->wlr_tablet_manager_v2 = wlr_tablet_v2_create(display);
-	assert(backend->wlr_tablet_manager_v2);
 
 	backend->wlr_pointer_constraints = wlr_pointer_constraints_v1_create(
 		display);
@@ -95,10 +44,6 @@ struct wlt_backend *create_wlt_backend(struct wl_display *display)
 	backend->wlr_presentation = wlr_presentation_create(display,
 		backend->wlr_backend);
 	assert(backend->wlr_presentation);
-
-	backend->wlr_foreign_toplevel_manager_v1 =
-		wlr_foreign_toplevel_manager_v1_create(display);
-	assert(backend->wlr_foreign_toplevel_manager_v1);
 
 	// FIXME: Implement wayland shell
 	backend->wlr_wl_shell = NULL;

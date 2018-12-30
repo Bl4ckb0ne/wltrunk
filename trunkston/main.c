@@ -6,12 +6,14 @@
 #include <wlr/util/log.h>
 
 #include "wltrunk/backend.h"
+#include "wltrunk/manager_handler.h"
 
 struct ts_server
 {
 	struct wl_display *wl_display;
 	struct wl_event_loop *wl_event_loop;
 	struct wlt_backend *wlt_backend;
+	struct wlt_manager_handler *wlt_manager_handler;
 };
 
 struct ts_server *create_server(void)
@@ -26,12 +28,16 @@ struct ts_server *create_server(void)
 	server->wlt_backend = create_wlt_backend(server->wl_display);
 	assert(server->wlt_backend);
 
+	server->wlt_manager_handler = create_wlt_manager_handler();
+	assert(server->wlt_manager_handler);
+
 	return server;
 }
 
 void destroy_server(struct ts_server *server)
 {
 	/* Destroy wltrunk resources */
+	destroy_wlt_manager_handler(server->wlt_manager_handler);
 	destroy_wlt_backend(server->wlt_backend);
 
 	/* Destroy Wayland resources */

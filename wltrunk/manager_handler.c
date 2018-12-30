@@ -22,6 +22,7 @@ struct wlt_manager_handler *create_wlt_manager_handler(void)
 
 bool init_wlt_manager_handler(struct wlt_manager_handler *manager)
 {
+	wlr_log(WLR_INFO, "Initializing wlt_manager_handler %p", (void*)manager);
 	// FIXME: initialize managers
 	memset(manager, 0, sizeof(struct wlt_manager_handler)); // to be removed
 

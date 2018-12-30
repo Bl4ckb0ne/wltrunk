@@ -1,5 +1,6 @@
 wltrunk_src = files(
-  'backend.c',
+	'backend.c',
+	'manager_handler.c',
 )
 
 wltrunk_deps = [

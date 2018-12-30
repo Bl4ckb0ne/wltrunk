@@ -1,7 +1,9 @@
 #ifndef WLT_BACKEND_H
 #define WLT_BACKEND_H
 
+#ifndef _POSIX_C_SOURCE
 #define _POSIX_C_SOURCE 200112L
+#endif // _POSIX_C_SOURCE
 
 #include <assert.h>
 #include <stdlib.h>

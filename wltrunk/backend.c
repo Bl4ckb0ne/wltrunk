@@ -24,6 +24,12 @@ struct wlt_backend *create_wlt_backend(struct wl_display *display)
 		backend->wlr_renderer);
 	assert(backend->wlr_compositor);
 
+	backend->wlr_output_layout = wlr_output_layout_create();
+	assert(backend->wlr_output_layout);
+
+	// TODO: Does that belongs in wlt_manager_handler ?
+	wlr_xdg_output_manager_v1_create(display, backend->wlr_output_layout);
+
 	backend->wlr_screenshooter = wlr_screenshooter_create(display);
 	assert(backend->wlr_screenshooter);
 
@@ -82,4 +88,33 @@ void destroy_wlt_backend(struct wlt_backend *backend)
 	wlr_backend_destroy(backend->wlr_backend);
 
 	free(backend);
+}
+
+void wlt_layout_change_handler(struct wl_listener *listener, void *data)
+{
+	struct wlt_backend *backend = wl_container_of(listener, backend,
+		layout_change);
+	assert(backend);
+
+	(void)data; // unused
+
+	wlr_log(WLR_DEBUG, "layout_change handler notified");
+}
+
+void wlt_backend_register_layout_change_handler(struct wlt_backend *backend,
+	wl_notify_func_t handler)
+{
+	wlr_log(WLR_DEBUG, "Registering layout_change handler");
+
+	backend->layout_change.notify = handler;
+	wl_signal_add(&backend->wlr_output_layout->events.change,
+		&backend->layout_change);
+}
+
+void wlt_backend_register_default_handlers(struct wlt_backend *backend)
+{
+	wlr_log(WLR_INFO, "Registering default wltrunk backend handlers");
+
+	wlt_backend_register_layout_change_handler(backend,
+		wlt_layout_change_handler);
 }

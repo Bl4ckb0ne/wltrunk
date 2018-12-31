@@ -28,6 +28,8 @@ struct ts_server *create_server(void)
 	server->wlt_backend = create_wlt_backend(server->wl_display);
 	assert(server->wlt_backend);
 
+	wlt_backend_register_default_handlers(server->wlt_backend);
+
 	server->wlt_manager_handler = create_wlt_manager_handler();
 	assert(server->wlt_manager_handler);
 
